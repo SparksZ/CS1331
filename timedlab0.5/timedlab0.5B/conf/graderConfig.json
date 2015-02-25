@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "testConstructor",
+      "comment": "Redactor didn\u0027t have a constructor (other tests may fail as a result)",
+      "points": 20,
+      "extraCredit": false
+    },
+    {
+      "name": "testBlackout",
+      "comment": "testBlackout() didn\u0027t generate the expected number of *\u0027s",
+      "points": 20,
+      "extraCredit": false
+    },
+    {
+      "name": "testRedact",
+      "comment": "redactDocument() didn\u0027t work",
+      "points": 30,
+      "extraCredit": false
+    },
+    {
+      "name": "testFullRedact",
+      "comment": "redactDocuments() didn\u0027t work",
+      "points": 30,
+      "extraCredit": false
+    }
+  ]
+}

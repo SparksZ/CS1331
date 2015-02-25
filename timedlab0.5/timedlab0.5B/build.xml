@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Practice Timed Lab 2" default="compile" basedir=".">
+    <property name="lib.dir" value="lib"/>
+    <property name="conf.dir" value="conf"/>
+    <property name="tests.dir" value="tests"/>
+
+    <property name="checkstyle.jar" value="${lib.dir}/checkstyle-6.2.1.jar"/>
+    <property name="grader.jar" value="${lib.dir}/autograder.jar"/>
+    <property name="submit.jar" value="${lib.dir}/Submit.jar"/>
+
+    <property name="test-class" value="RedactorTests"/>
+    <property name="main-class" value="Redactor"/>
+    <property name="grader-class" value="edu.gatech.cs1331.Application"/>
+    
+    <property name="grader.conf" value="${conf.dir}/graderConfig.json"/>
+    <property name="submit.conf" value="${conf.dir}/submitConfigB.json"/>
+    
+    <fileset dir="." includes="*.java" id="files" />
+    <pathconvert pathsep=" " property="file-list" refid="files" />
+   
+   <target name="compile">
+        <javac srcdir="." destdir="." includeantruntime="false" taskname="">
+            <exclude name="${tests.dir}/*.java"/>
+        </javac>
+    </target>
+
+    <target name="checkstyle">
+        <java jar="${checkstyle.jar}" fork="true" taskname="" failonerror="true">
+            <arg line="'${file-list}'"/>
+        </java>
+    </target>
+    
+    <target name="test" depends="compile">
+        <java classname="${grader-class}" fork="true" taskname=""> 
+            <classpath>
+                <pathelement path="."/>
+                <pathelement location="${grader.jar}"/>
+                <pathelement path="${tests.dir}"/>
+            </classpath>
+            <arg value="-c"/>
+            <arg value="-j"/>
+            <arg value="${grader.conf}"/>
+            <arg value="-t"/>
+            <arg value="${test-class}"/>
+        </java> 
+    </target>
+    
+    <target name="run" depends="compile">
+        <java classname="${main-class}" classpath="." taskname=""/>
+    </target>
+
+    <target name="submit" depends="compile">
+        <java jar="${submit.jar}" fork="true" taskname="">
+            <arg value="${submit.conf}"/>
+            <arg line="'${file-list}'"/>
+        </java>
+    </target>
+</project>

@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "average",
+      "comment": "",
+      "points": 0,
+      "extraCredit": false
+    },
+    {
+      "name": "extractScores",
+      "comment": "",
+      "points": 0,
+      "extraCredit": false
+    },
+    {
+      "name": "extractClause",
+      "comment": "",
+      "points": 0,
+      "extraCredit": false
+    },
+    {
+      "name": "mainMethod",
+      "comment": "",
+      "points": 0,
+      "extraCredit": false
+    }
+  ]
+}
